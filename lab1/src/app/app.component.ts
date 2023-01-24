@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'lab1';
+  cheapWisdom = 'Cheap wisdom is expensive';
+  numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+  n ?: number;
 }

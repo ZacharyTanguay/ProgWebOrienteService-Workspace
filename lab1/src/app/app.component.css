@@ -1,0 +1,19 @@
+.container {
+    padding: 1%;
+}
+
+#row {
+    height: 100px;
+}
+
+#col1 {
+    background-color: darkblue;
+    color: white;
+    opacity: 0.7;
+}
+
+#col2 {
+    background-color: darkmagenta;
+    color: white;
+    opacity: 1;
+}
