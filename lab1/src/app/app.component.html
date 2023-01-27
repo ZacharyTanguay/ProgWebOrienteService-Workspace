@@ -7,4 +7,31 @@
       <p>{{n}}?</p>
     </div>
   </div>
+  <div class="row mt-1" id="row">
+    <div class="col-3" id="col1">
+      <p>Nom : {{child.name}}</p>
+      <p>Âge : {{child.age}}</p>
+      <p>Résultat de go ToSchool : {{child.goToSchool()}}</p>
+    </div>
+    <div class="col" id="col2">
+      <ul>
+        <li *ngFor="let h of hateList">{{h}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row mt-1" id="row">
+    <div class="col-3" id="col1">
+      <form (ngSubmit)="addNFT()">
+        Description : <input class="form-control" type="text" name="desc" [(ngModel)] = "desc">
+        Prix : <input class="form-control" type="number" name="prix" [(ngModel)] = "price">
+        <button class="btn btn-light my-2" type="submit">Ajouter un NFT</button>
+      </form>
+      <form (ngSubmit)="removeNFT()">
+        <button class="btn btn-light my-2" type="submit">Retirer le dernier NFT</button>
+      </form>
+    </div>
+    <div class="col" id="col2">
+      <p *ngFor="let n of nft">{{n.desc}} : {{n.price}} <span *ngIf="n.price > 100">(Arnaque)</span></p>
+    </div>
+  </div>
 </div>
