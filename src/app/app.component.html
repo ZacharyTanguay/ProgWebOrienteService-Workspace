@@ -17,6 +17,10 @@
         <h2>Résultats</h2>
         <div *ngIf="result">
 		  <!-- L'affichage des artistes similaires sera ici -->
+      <h3>Artiste similaires à {{artistName}}</h3>
+      <ul>
+        <li *ngFor="let x of similarArtists">{{x}}</li>
+      </ul>
 		</div>
     </div>
   </div>
