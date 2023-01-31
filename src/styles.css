@@ -1,0 +1,4 @@
+body{
+    background:radial-gradient(rgba(255,255,255,0), rgba(0,0,0,0.5)) fixed, 
+               linear-gradient(to bottom, #3F1428, #26173E) fixed;
+}

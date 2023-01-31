@@ -1,0 +1,23 @@
+<div class="container-xxl">
+  <header class="row align-items-center">
+    <div class="col-1 mx-0 px-0"><img class="img-fluid" src="../assets/images/note.png" alt="Music note"></div>
+    <div class="col"><h1>Requêtes musicales</h1></div>
+  </header>
+  <div class="row">
+    <div class="col-3">
+      <form (ngSubmit)="searchArtist()" *ngIf="!result">
+        <input type="text" name="artistName" [(ngModel)]="artist" class="form-control" placeholder="Nom d'un artiste">
+        <input type="submit" value="Rechercher l'artiste" class="btn btn-light">
+      </form>
+      <form (ngSubmit)="newSearch()" *ngIf="result">
+        <input type="submit" value="Nouvelle recherche">
+      </form>
+    </div>
+    <div class="col artists">
+        <h2>Résultats</h2>
+        <div *ngIf="result">
+		  <!-- L'affichage des artistes similaires sera ici -->
+		</div>
+    </div>
+  </div>
+</div>
