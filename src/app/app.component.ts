@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { async } from '@angular/core/testing';
 import { lastValueFrom } from 'rxjs';
 
 @Component({
@@ -13,25 +14,46 @@ export class AppComponent {
   result = false;
 
   artist : string = "";
-  similarArtists : string[] = [];
+  album : string = "";
+  track : string = "";
+  artistAlbums : Album[] = [];
+  albumChansons : Chanson[] = [];
 
   constructor(public http : HttpClient){}
 
   async searchArtist():Promise<void>{
     this.result = true;
-    let x = await lastValueFrom(this.http.get<any>("http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + this.artist + "&api_key=e34ebf8561ba7c653a21d1d99a1a0070&format=json"));
-           
-    console.log(x);
-    this.artist = x.artist;
-      for(let artist of x.similarartists.artist){
-        this.similarArtists.push(artist.name);
-      }
-    
+    let x = await lastValueFrom(this.http.get<any>("http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=" + this.artist + "&api_key=9a8a3facebbccaf363bb9fd68fa37abf&format=json"));
    
+    console.log(x);
+
+      for(let album of x.topalbums.album){
+        this.artistAlbums.push(new Album(album.name, album.image[0]["#text"]));
+      }
+  }
+
+  async searchAlbum():Promise<void>{
+    let y = await lastValueFrom(this.http.get<any>("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=" + this.artist + "&album=believe" + "&api_key=9a8a3facebbccaf363bb9fd68fa37abf&format=json")); 
+    console.log(y);
+    this.albumChansons = y.album.tracks.track;
+
   }
 
   newSearch():void{
-    this.similarArtists = [];
+    this.artistAlbums = [];
     this.result = false;
   }
+
+  chanson():void{
+    alert(this.albumChansons);
+  }
+
+}
+
+class Album{
+  constructor(public name : string, public image : string){}
+}
+
+class Chanson{
+  constructor(public name : string ){}
 }

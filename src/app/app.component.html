@@ -16,9 +16,11 @@
     <div class="col artists">
         <h2>Résultats</h2>
         <div *ngIf="result">
-          <h3>Artistes similaires à {{artist}}</h3>
-          <ul>
-            <li *ngFor="let x of similarArtists">{{x}}</li>
+          <h3>Album de l'artistes {{artist}}</h3>
+          <ul class="albums">
+            <form id="1" (ngSubmit)="searchAlbum()" *ngIf="result">
+              <p *ngFor="let x of artistAlbums"><img [src]="x.image"> &nbsp;&nbsp;&nbsp; <button (click)="chanson()" form="1" class="btn btn-light">{{x.name}}</button></p>
+            </form>
           </ul>
         </div>
     </div>
