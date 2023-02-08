@@ -11,43 +11,60 @@ import { lastValueFrom } from 'rxjs';
 export class AppComponent {
   title = 'TP1_SuperMusiqueInfinie';
 
-  result = false;
+  resultArtist = false;
+  resultTrack = false;
 
   artist : string = "";
   album : string = "";
+  track : string[]= [];
   artistAlbums : Album[] = [];
-  albumChansons : Chanson[] = [];
+  albumTracks : Chanson[] = [];
 
   constructor(public http : HttpClient){}
 
   async searchArtist():Promise<void>{
-    this.result = true;
+    this.resultArtist = true;
+    this.resultTrack = false; 
     let x = await lastValueFrom(this.http.get<any>("http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=" + this.artist + "&api_key=9a8a3facebbccaf363bb9fd68fa37abf&format=json"));
-    let y = await lastValueFrom(this.http.get<any>("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=" + this.artist + "&album=" + this.artist + "&api_key=9a8a3facebbccaf363bb9fd68fa37abf&format=json")); 
     
     console.log(x);
-    console.log(y);
 
       for(let album of x.topalbums.album){
-        this.artistAlbums.push(new Album(album.name, album.image[0]["#text"], "test"));
-      }
-      for(let track of y.album.tracks.track){
-        this.albumChansons.push(new Chanson(track.name));
+        this.artistAlbums.push(new Album(album.name, album.image[0]["#text"], this.track));
       }
       console.log(this.artistAlbums);
-      console.log(this.albumChansons);
+  }
+
+  async searchTrack(album : string):Promise<void>{
+    this.resultArtist = false;
+    this.resultTrack = true;
+    this.album = album;
+    this.albumTracks = [];
+    this.track = [];
+    let y = await lastValueFrom(this.http.get<any>("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=" + this.artist + "&album=" + album  + "&api_key=9a8a3facebbccaf363bb9fd68fa37abf&format=json"));
+
+    for(let albumTrack of y.album.tracks.track){
+      this.albumTracks.push(new Chanson(albumTrack.name));
+      console.log(this.albumTracks);
+    }
+    
+    for (let track of this.albumTracks) {
+      this.track.push(track.name);
+      console.log(this.track);
+    }
   }
 
   newSearch():void{
     this.artistAlbums = [];
-    this.albumChansons = [];
-    this.result = false;
+    this.albumTracks = [];
+    this.resultArtist = false;
+    this.resultTrack = false;
   }
 
 }
 
 class Album{
-  constructor(public name : string, public image : string, public trackList : string){}
+  constructor(public name : string, public image : string, public trackList : string[]){}
 }
 
 class Chanson{
