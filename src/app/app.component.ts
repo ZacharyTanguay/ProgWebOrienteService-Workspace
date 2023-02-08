@@ -15,7 +15,6 @@ export class AppComponent {
 
   artist : string = "";
   album : string = "";
-  track : string = "";
   artistAlbums : Album[] = [];
   albumChansons : Chanson[] = [];
 
@@ -24,34 +23,31 @@ export class AppComponent {
   async searchArtist():Promise<void>{
     this.result = true;
     let x = await lastValueFrom(this.http.get<any>("http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=" + this.artist + "&api_key=9a8a3facebbccaf363bb9fd68fa37abf&format=json"));
-   
+    let y = await lastValueFrom(this.http.get<any>("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=" + this.artist + "&album=" + this.artist + "&api_key=9a8a3facebbccaf363bb9fd68fa37abf&format=json")); 
+    
     console.log(x);
+    console.log(y);
 
       for(let album of x.topalbums.album){
-        this.artistAlbums.push(new Album(album.name, album.image[0]["#text"]));
+        this.artistAlbums.push(new Album(album.name, album.image[0]["#text"], "test"));
       }
-  }
-
-  async searchAlbum():Promise<void>{
-    let y = await lastValueFrom(this.http.get<any>("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=" + this.artist + "&album=believe" + "&api_key=9a8a3facebbccaf363bb9fd68fa37abf&format=json")); 
-    console.log(y);
-    this.albumChansons = y.album.tracks.track;
-
+      for(let track of y.album.tracks.track){
+        this.albumChansons.push(new Chanson(track.name));
+      }
+      console.log(this.artistAlbums);
+      console.log(this.albumChansons);
   }
 
   newSearch():void{
     this.artistAlbums = [];
+    this.albumChansons = [];
     this.result = false;
-  }
-
-  chanson():void{
-    alert(this.albumChansons);
   }
 
 }
 
 class Album{
-  constructor(public name : string, public image : string){}
+  constructor(public name : string, public image : string, public trackList : string){}
 }
 
 class Chanson{

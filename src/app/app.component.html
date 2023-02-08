@@ -18,9 +18,7 @@
         <div *ngIf="result">
           <h3>Album de l'artistes {{artist}}</h3>
           <ul class="albums">
-            <form id="1" (ngSubmit)="searchAlbum()" *ngIf="result">
-              <p *ngFor="let x of artistAlbums"><img [src]="x.image"> &nbsp;&nbsp;&nbsp; <button (click)="chanson()" form="1" class="btn btn-light">{{x.name}}</button></p>
-            </form>
+            <p *ngFor="let x of artistAlbums"><img [src]="x.image"> &nbsp;&nbsp;&nbsp; {{x.name}} &nbsp; {{x.trackList}}</p>
           </ul>
         </div>
     </div>
