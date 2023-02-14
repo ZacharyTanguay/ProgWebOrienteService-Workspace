@@ -16,7 +16,7 @@ import { SongComponent } from './song/song.component';
     ArtistComponent,
     AlbumComponent,
     ShowComponent,
-    SongComponent
+    SongComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,14 +24,14 @@ import { SongComponent } from './song/song.component';
     HttpClientModule,
     RouterModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: '/artist', pathMatch: 'full'},
+      { path: '', redirectTo: '/artist', pathMatch: 'full' },
       { path: 'artist', component: ArtistComponent },
       { path: 'album', component: AlbumComponent },
       { path: 'show', component: ShowComponent },
-      { path: 'song', component: SongComponent }
-    ])
+      { path: 'song', component: SongComponent },
+    ]),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

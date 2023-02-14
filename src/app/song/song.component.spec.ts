@@ -1,3 +1,4 @@
+import { HttpService } from '../services/http.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SongComponent } from './song.component';
