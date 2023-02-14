@@ -1,0 +1,36 @@
+/*
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█ Page artiste seulement █
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+*/
+
+.search{
+    flex:1;
+}
+
+.search input{
+    width:100%;
+    margin-bottom:5px;
+}
+
+.display{
+    flex:3;
+}
+
+.display .row{
+    gap:7px;
+}
+
+.display h4{
+    margin:0px 0px 5px 0px;
+}
+
+.display .row>div{
+    flex-basis: 29.5%;
+    text-align:center;
+    border:lightgray 1px solid;
+}
+
+.display .row>div>img{
+    width:100%;
+}

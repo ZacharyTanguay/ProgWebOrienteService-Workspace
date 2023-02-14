@@ -1,1 +1,200 @@
-/* You can add global styles to this file, and also import other style files */
+/*
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█    Toutes les pages    █
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+*/
+
+header a{
+    text-decoration: none;
+    color:inherit;
+}
+
+.row{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+header .row{
+    gap:10px;
+}
+
+header .row div{
+    padding:10px;
+    cursor:pointer;
+}
+
+.spacer{
+    flex:1;
+}
+
+body{
+    background-color:#f5fafa;
+    background-image: linear-gradient(#f5fafa, #f9f5fa) fixed;
+    font-family:Verdana;
+}
+
+header,main,footer{
+    background-color:white;
+    border:lightgray solid 1px;
+    width:1000px;
+    margin:auto;
+    margin-bottom:5px;
+}
+
+footer div{
+    
+    text-align:center;
+    padding:10px;
+    font-size:0.8em;
+}
+
+main .row>div{
+    padding:10px;
+}
+
+main h3{
+    margin: 0px 0px 5px 0px;
+    text-align:center;
+}
+
+/*
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█ Page artiste seulement █
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+*/
+
+.search{
+    flex:1;
+}
+
+.search input{
+    width:100%;
+    margin-bottom:5px;
+}
+
+.display{
+    flex:3;
+}
+
+.display .row{
+    gap:7px;
+}
+
+.display h4{
+    margin:0px 0px 5px 0px;
+}
+
+.display .row>div{
+    flex-basis: 29.5%;
+    text-align:center;
+    border:lightgray 1px solid;
+}
+
+.display .row>div>img{
+    width:100%;
+}
+
+/*
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█  Page album seulement  █
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+*/
+
+.albums{
+    flex:3;
+}
+
+.albums .row{
+    gap:7px;
+}
+
+.albums h4{
+    margin:0px 0px 5px 0px;
+}
+
+.albums .row>div{
+    flex-basis: 22.2%;
+    text-align:center;
+    border:lightgray 1px solid;
+}
+
+.albums .row>div>img{
+    width:100%;
+}
+
+/*
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█  Page chansons seulement  █
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+*/
+
+.youtubePlayer{
+    flex:3;
+    margin-right:0px;
+}
+
+.youtubePlayer img{
+    width:100%;
+}
+
+main .row>.youtubePlayer{
+    padding-right:0px;
+}
+
+.songs{
+    flex:1;
+}
+
+.songs p{
+    margin:0px 0px 5px 0px;
+    display:inline-block;
+}
+
+.songs div{
+    flex-basis: 100%;
+    text-align:center;
+    border:lightgray 1px solid;
+    padding:5px;
+}
+
+.songList{
+    height:398px;
+    overflow-y:scroll;
+}
+
+.songList div{
+    margin-bottom:3px;
+}
+
+main>h3{
+    margin-top:10px;
+}
+
+/*
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█  Page concerts seulement  █
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+*/
+
+.map{
+    width:100%;
+    padding:5px;
+    flex-basis: 100%;
+}
+
+.shows{
+    display:flex;
+    gap:5px;
+    padding:5px;
+    flex-wrap: wrap;
+}
+
+.shows>div{
+    padding:10px;
+    border:solid 1px lightgray;
+    flex-basis:22.3%;
+}
+
+.shows h4, .shows p{
+    margin:5px 0px;
+}

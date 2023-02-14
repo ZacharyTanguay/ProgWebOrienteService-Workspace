@@ -1,0 +1,47 @@
+/*
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█  Page chansons seulement  █
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+*/
+
+.youtubePlayer{
+    flex:3;
+    margin-right:0px;
+}
+
+.youtubePlayer img{
+    width:100%;
+}
+
+main .row>.youtubePlayer{
+    padding-right:0px;
+}
+
+.songs{
+    flex:1;
+}
+
+.songs p{
+    margin:0px 0px 5px 0px;
+    display:inline-block;
+}
+
+.songs div{
+    flex-basis: 100%;
+    text-align:center;
+    border:lightgray 1px solid;
+    padding:5px;
+}
+
+.songList{
+    height:398px;
+    overflow-y:scroll;
+}
+
+.songList div{
+    margin-bottom:3px;
+}
+
+main>h3{
+    margin-top:10px;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Ce projet n'utilise pas Bootstrap. Il faut éviter Bootstrap dans les projets Angular -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="artist.component.css">
+    <title>TP2</title>
+</head>
+<body>
+    <main>
+        <div class="row">
+            <div class="search">
+                <h3>Ajouter un artiste</h3>
+                <form>
+                    <input type="text" name="artistName" placeholder="Nana Mouskouri">
+                    <button>Rechercher</button>
+                </form>
+            </div>
+            <div class="display">
+                <h3>Vos artistes</h3>
+                <div class="row">
+
+                    <!-- Liste d'artistes ajoutés aux favoris -->
+                    <div>
+                        <h4>Artiste 1</h4>
+                        <img src="assets/images/artist.png" alt="Artiste 1">
+                        <button>Albums</button><button>Concerts</button>
+                    </div>
+                    <div>
+                        <h4>Artiste 2</h4>
+                        <img src="assets/images/artist.png" alt="Artiste 2">
+                        <button>Albums</button><button>Concerts</button>
+                    </div>
+                    <div>
+                        <h4>Artiste 3</h4>
+                        <img src="assets/images/artist.png" alt="Artiste 3">
+                        <button>Albums</button><button>Concerts</button>
+                    </div>
+                    <div>
+                        <h4>Artiste 4</h4>
+                        <img src="assets/images/artist.png" alt="Artiste 4">
+                        <button>Albums</button><button>Concerts</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div>
+            &copy; Tous droits réservés à Spotify, BandsInTown et Google
+        </div>
+    </footer>
+</body>
+</html>

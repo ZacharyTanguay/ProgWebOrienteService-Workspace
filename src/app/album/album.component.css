@@ -1,0 +1,27 @@
+/*
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█  Page album seulement  █
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+*/
+
+.albums{
+    flex:3;
+}
+
+.albums .row{
+    gap:7px;
+}
+
+.albums h4{
+    margin:0px 0px 5px 0px;
+}
+
+.albums .row>div{
+    flex-basis: 22.2%;
+    text-align:center;
+    border:lightgray 1px solid;
+}
+
+.albums .row>div>img{
+    width:100%;
+}

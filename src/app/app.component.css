@@ -1,0 +1,58 @@
+/*
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█    Toutes les pages    █
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+*/
+
+header a{
+    text-decoration: none;
+    color:inherit;
+}
+
+.row{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+header .row{
+    gap:10px;
+}
+
+header .row div{
+    padding:10px;
+    cursor:pointer;
+}
+
+.spacer{
+    flex:1;
+}
+
+body{
+    background-color:#f5fafa;
+    background-image: linear-gradient(#f5fafa, #f9f5fa) fixed;
+    font-family:Verdana;
+}
+
+header,main,footer{
+    background-color:white;
+    border:lightgray solid 1px;
+    width:1000px;
+    margin:auto;
+    margin-bottom:5px;
+}
+
+footer div{
+    
+    text-align:center;
+    padding:10px;
+    font-size:0.8em;
+}
+
+main .row>div{
+    padding:10px;
+}
+
+main h3{
+    margin: 0px 0px 5px 0px;
+    text-align:center;
+}
