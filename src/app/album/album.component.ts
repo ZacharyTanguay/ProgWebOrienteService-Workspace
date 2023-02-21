@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../services/http.service';
+import { SpotifyHttpService } from '../services/spotify.service';
 
 @Component({
   selector: 'app-album',
@@ -8,7 +8,7 @@ import { HttpService } from '../services/http.service';
 })
 export class AlbumComponent implements OnInit {
 
-  constructor(public httpService: HttpService) { }
+  constructor(public httpService: SpotifyHttpService) { }
 
   ngOnInit(): void {
     this.httpService.connectSpotify();

@@ -1,4 +1,4 @@
-import { HttpService } from './../services/http.service';
+import { SpotifyHttpService } from '../services/spotify.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./song.component.css'],
 })
 export class SongComponent implements OnInit {
-  constructor(public httpService: HttpService) { }
+  constructor(public httpService: SpotifyHttpService) { }
 
   ngOnInit(): void {
     this.httpService.connectSpotify();

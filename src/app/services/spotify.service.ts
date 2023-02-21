@@ -1,5 +1,5 @@
-import { Album } from './../models/Album';
-import { Artist } from './../models/Artist';
+import { Album } from '../models/Album';
+import { Artist } from '../models/Artist';
 import { lastValueFrom } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
@@ -12,8 +12,10 @@ const CLIENT_SECRET = '4992e896159442a6a78b0ec1433188c1';
 @Injectable({
   providedIn: 'root',
 })
-export class HttpService implements OnInit {
+export class SpotifyHttpService implements OnInit {
   spotifyToken?: string;
+  artist ?: Artist;
+  albums : Album[] = [];
 
   constructor(public httpClient: HttpClient) { }
   ngOnInit(): void {
@@ -50,27 +52,21 @@ export class HttpService implements OnInit {
     };
   }
 
-  async searchArtist(artist: string): Promise<Artist | null> {
-    try {
-      let x = await lastValueFrom(
-        this.httpClient.get<any>(
-          'https://api.spotify.com/v1/search?type=artist&offset=0&limit=1&q=' +
-          artist,
-          this.getHttpOptions()
-        )
-      );
-      console.log(x);
+  async getArtist(artistName?: string): Promise<Artist> {
+    let x = await lastValueFrom(
+      this.httpClient.get<any>(
+        'https://api.spotify.com/v1/search?type=artist&offset=0&limit=1&q=' +
+        artistName,
+        this.getHttpOptions()
+      )
+    );
+    console.log(x);
 
-      return new Artist(
-        x.artists.items[0].id,
-        x.artists.items[0].name,
-        x.artists.items[0].images[0].url
-      );
-    } catch (error) {
-      console.log('Error while searching for artist : ' + artist);
-      console.log('error');
-      return null;
-    }
+    return new Artist(
+      x.artists.items[0].id,
+      x.artists.items[0].name,
+      x.artists.items[0].images[0].url
+    );
   }
 
   async getAlbums(artist: Artist): Promise<Album[] | null> {
@@ -125,4 +121,5 @@ export class HttpService implements OnInit {
       return [];
     }
   }
+
 }
