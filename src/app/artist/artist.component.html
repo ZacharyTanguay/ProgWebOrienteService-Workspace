@@ -24,29 +24,12 @@
             <!-- Liste d'artistes ajoutés aux favoris -->
             <div *ngFor="let x of favoriteArtists">
                 <h4>{{x.name}}</h4>
-                <img [src]="x.imageUrl" />
+                <img [src]="x.imageUrl" alt="x.name" />
                 <button>Albums</button><button>Concerts</button>
               </div>
-            <div>
-              <h4>Artiste 1</h4>
-              <img src="assets/images/artist.png" alt="Artiste 1" />
-              <button>Albums</button><button>Concerts</button>
-            </div>
-            <div>
-              <h4>Artiste 2</h4>
-              <img src="assets/images/artist.png" alt="Artiste 2" />
-              <button>Albums</button><button>Concerts</button>
-            </div>
-            <div>
-              <h4>Artiste 3</h4>
-              <img src="assets/images/artist.png" alt="Artiste 3" />
-              <button>Albums</button><button>Concerts</button>
-            </div>
-            <div>
-              <h4>Artiste 4</h4>
-              <img src="assets/images/artist.png" alt="Artiste 4" />
-              <button>Albums</button><button>Concerts</button>
-            </div>
+          </div>
+          <div>
+            <button class="button-center" (click)="clearFavoriteArtist()">Vider les favoris</button>
           </div>
         </div>
       </div>

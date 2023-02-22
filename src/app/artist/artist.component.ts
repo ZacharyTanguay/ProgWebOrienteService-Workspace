@@ -15,7 +15,7 @@ export class ArtistComponent implements OnInit {
 
   constructor(public httpService: SpotifyHttpService) {}
 
-  async ngOnInit() {
+  ngOnInit() {
     this.httpService.connectSpotify();
 
     this.jsonData = localStorage.getItem("favoriteArtists");
@@ -30,19 +30,21 @@ export class ArtistComponent implements OnInit {
   }
 
   createFavoriteArtist() : void {
-    if (!this.artist) {
+    if (!this.artist || this.favoriteArtists?.find((x) => x.id === this.artist?.id)) {
       return;
     }
     this.favoriteArtists?.push(new Artist(this.artist.id, this.artist.name, this.artist.imageUrl));
     this.saveFavoriteArtist();
   }
 
-  saveFavoriteArtist() : void {
-    localStorage.setItem("favoriteArtists", JSON.stringify(this.favoriteArtists));
+
+  clearFavoriteArtist() : void {
+    this.favoriteArtists = [];
+    this.saveFavoriteArtist();
   }
 
-  afficherFavoriteArtist() : void {
-
+  saveFavoriteArtist() : void {
+    localStorage.setItem("favoriteArtists", JSON.stringify(this.favoriteArtists));
   }
 
 }
