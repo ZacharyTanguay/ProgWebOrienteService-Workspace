@@ -14,22 +14,25 @@
         <div class="search">
           <h3>Ajouter un artiste</h3>
           <form>
-            <input [(ngModel)]="inputArtist" type="text" name="inputArtist" placeholder="Nana Mouskouri" >
-            <button (click)="searchArtist()">Rechercher</button>
+            <input [(ngModel)]="inputArtist" type="text" name="inputArtist" placeholder="Rechercher un artiste ..." >
+            <button (click)="searchArtist()">Ajouter aux favoris</button>
           </form>
         </div>
         <div class="display">
           <h3>Vos artistes</h3>
+          <div class="text-center" *ngIf="favoriteArtists?.length == 0">
+            <p>Aucun artiste favoris</p>
+          </div>
           <div class="row">
             <!-- Liste d'artistes ajoutés aux favoris -->
             <div *ngFor="let x of favoriteArtists">
                 <h4>{{x.name}}</h4>
-                <img [src]="x.imageUrl" alt="x.name" />
+                <img [src]="x.imageUrl" alt="x.name" width="212.39" height="212.39" />
                 <button>Albums</button><button>Concerts</button>
               </div>
           </div>
-          <div>
-            <button class="button-center" (click)="clearFavoriteArtist()">Vider les favoris</button>
+          <div class="text-center">
+            <button (click)="clearFavoriteArtist()">Vider les favoris</button>
           </div>
         </div>
       </div>

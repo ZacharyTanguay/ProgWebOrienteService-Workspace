@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class ArtistComponent implements OnInit {
   inputArtist ?: string;
   artist ?: Artist | null = null;
-  favoriteArtists ?: Artist[];
+  favoriteArtists ?: Artist[] = [];
   jsonData : string | null = null;
 
   constructor(public httpService: SpotifyHttpService) {}
@@ -25,6 +25,9 @@ export class ArtistComponent implements OnInit {
   }
 
   async searchArtist() : Promise<void> {
+    if (!this.inputArtist) {
+      return;
+    }
     this.artist = await this.httpService.getArtist(this.inputArtist);
     this.createFavoriteArtist();
   }

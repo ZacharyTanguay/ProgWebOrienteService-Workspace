@@ -34,3 +34,7 @@
 .display .row>div>img{
     width:100%;
 }
+
+.text-center{
+    text-align:center;
+}
