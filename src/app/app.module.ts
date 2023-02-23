@@ -26,7 +26,7 @@ import { SongComponent } from './song/song.component';
     RouterModule.forRoot([
       { path: '', redirectTo: '/artist', pathMatch: 'full' },
       { path: 'artist', component: ArtistComponent },
-      { path: 'album', component: AlbumComponent },
+      { path: 'album/:artist.id', component: AlbumComponent },
       { path: 'show', component: ShowComponent },
       { path: 'song', component: SongComponent },
     ]),

@@ -28,7 +28,7 @@
             <div *ngFor="let x of favoriteArtists">
                 <h4>{{x.name}}</h4>
                 <img [src]="x.imageUrl" alt="x.name" width="212.39" height="212.39" />
-                <button>Albums</button><button>Concerts</button>
+                <button [routerLink]="['/album', 'x.id']">Albums</button><button>Concerts</button>
               </div>
           </div>
           <div class="text-center">
