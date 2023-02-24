@@ -88,12 +88,12 @@ export class SpotifyHttpService implements OnInit {
     */
   }
 
-  async getAlbums(artist: Artist): Promise<Album[] | null> {
+  async getAlbums(artistId: string): Promise<Album[] | null> {
     try {
       let x = await lastValueFrom(
         this.httpClient.get<any>(
           'https://api.spotify.com/v1/artists/' +
-          artist.id +
+          artistId +
           '/albums?include_groups=album,single',
           this.getHttpOptions()
         )
@@ -113,7 +113,7 @@ export class SpotifyHttpService implements OnInit {
       }
       return albums;
     } catch (error) {
-      console.log('Error while getting albums for artist : ' + artist.name);
+      console.log('Error while getting albums for artist : ' + artistId);
       console.log('error');
       return null;
     }
