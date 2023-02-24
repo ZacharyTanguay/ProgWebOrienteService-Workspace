@@ -1,5 +1,5 @@
+import { Artist } from './../models/Artist';
 import { Album } from '../models/Album';
-import { Artist } from '../models/Artist';
 import { lastValueFrom } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
@@ -52,7 +52,25 @@ export class SpotifyHttpService implements OnInit {
     };
   }
 
-  async getArtist(artistName?: string): Promise<Artist> {
+  async getArtist(artistName?: string): Promise<Artist | undefined> {
+    const response = await lastValueFrom(
+      this.httpClient.get<ArtistsResponse>(
+        'https://api.spotify.com/v1/search?type=artist&offset=0&limit=1&q=' +
+        artistName,
+        this.getHttpOptions()
+      )
+    );
+    console.log(response);
+
+    return response.artists.items.map((artist) => {
+      return new Artist(
+        artist.id,
+        artist.name,
+        artist.images[0].url
+      );
+    })[0];
+
+    /* Sans interface
     let x = await lastValueFrom(
       this.httpClient.get<any>(
         'https://api.spotify.com/v1/search?type=artist&offset=0&limit=1&q=' +
@@ -67,6 +85,7 @@ export class SpotifyHttpService implements OnInit {
       x.artists.items[0].name,
       x.artists.items[0].images[0].url
     );
+    */
   }
 
   async getAlbums(artist: Artist): Promise<Album[] | null> {
@@ -122,4 +141,18 @@ export class SpotifyHttpService implements OnInit {
     }
   }
   
+}
+
+interface ArtistsResponse {
+    artists: {
+      items: ArtistResponse[];
+    };
+}
+
+interface ArtistResponse {
+    id: string;
+    name: string;
+    images: { 
+      url: string 
+    }[];
 }
