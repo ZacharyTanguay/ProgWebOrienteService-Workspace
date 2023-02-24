@@ -1,6 +1,6 @@
 import { Artist } from './../models/Artist';
 import { Component, OnInit } from '@angular/core';
-import { SpotifyHttpService } from '../services/spotify.service';
+import { SpotifyService } from '../services/spotify.service';
 import { ActivatedRoute } from '@angular/router';
 import { Album } from '../models/Album';
 
@@ -13,7 +13,7 @@ export class AlbumComponent implements OnInit {
   artistId : string | null = null;
   album : Album[] | null = null;
 
-  constructor(public httpService: SpotifyHttpService, public route : ActivatedRoute) { }
+  constructor(public httpService: SpotifyService, public route : ActivatedRoute) { }
 
   ngOnInit(): void {
     this.httpService.connectSpotify();

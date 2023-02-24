@@ -1,4 +1,4 @@
-import { SpotifyHttpService } from '../services/spotify.service';
+import { SpotifyService } from '../services/spotify.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SongComponent } from './song.component';

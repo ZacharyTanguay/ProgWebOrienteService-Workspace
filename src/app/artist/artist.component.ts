@@ -1,5 +1,5 @@
 import { Artist } from './../models/Artist';
-import { SpotifyHttpService } from '../services/spotify.service';
+import { SpotifyService } from '../services/spotify.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,7 +13,7 @@ export class ArtistComponent implements OnInit {
   favoriteArtists ?: Artist[] = [];
   jsonData : string | null = null;
 
-  constructor(public httpService: SpotifyHttpService) {}
+  constructor(public httpService: SpotifyService) {}
 
   ngOnInit() {
     this.httpService.connectSpotify();

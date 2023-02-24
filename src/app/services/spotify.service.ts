@@ -12,7 +12,7 @@ const CLIENT_SECRET = '4992e896159442a6a78b0ec1433188c1';
 @Injectable({
   providedIn: 'root',
 })
-export class SpotifyHttpService implements OnInit {
+export class SpotifyService implements OnInit {
   spotifyToken?: string;
   artist ?: Artist;
   albums : Album[] = [];
@@ -53,7 +53,7 @@ export class SpotifyHttpService implements OnInit {
   }
 
   async getArtist(artistName?: string): Promise<Artist | undefined> {
-    const response = await lastValueFrom(
+    let response = await lastValueFrom(
       this.httpClient.get<ArtistsResponse>(
         'https://api.spotify.com/v1/search?type=artist&offset=0&limit=1&q=' +
         artistName,
@@ -66,7 +66,7 @@ export class SpotifyHttpService implements OnInit {
       return new Artist(
         artist.id,
         artist.name,
-        artist.images[0].url
+        artist.imagesUrl[0].url
       );
     })[0];
 
@@ -152,7 +152,7 @@ interface ArtistsResponse {
 interface ArtistResponse {
     id: string;
     name: string;
-    images: { 
+    imagesUrl: { 
       url: string 
     }[];
 }

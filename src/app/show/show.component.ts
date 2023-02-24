@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SpotifyHttpService } from '../services/spotify.service';
+import { SpotifyService } from '../services/spotify.service';
 
 @Component({
   selector: 'app-show',
@@ -7,7 +7,7 @@ import { SpotifyHttpService } from '../services/spotify.service';
   styleUrls: ['./show.component.css'],
 })
 export class ShowComponent implements OnInit {
-  constructor(public httpService: SpotifyHttpService) { }
+  constructor(public httpService: SpotifyService) { }
 
   ngOnInit(): void {
     this.httpService.connectSpotify();
