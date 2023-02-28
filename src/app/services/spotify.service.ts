@@ -66,7 +66,7 @@ export class SpotifyService implements OnInit {
       return new Artist(
         artist.id,
         artist.name,
-        artist.imagesUrl[0].url
+        artist.images[0].url
       );
     })[0];
 
@@ -152,7 +152,7 @@ interface ArtistsResponse {
 interface ArtistResponse {
     id: string;
     name: string;
-    imagesUrl: { 
+    images: { 
       url: string 
     }[];
 }
