@@ -1,6 +1,7 @@
 import { Artist } from './../models/Artist';
 import { SpotifyService } from '../services/spotify.service';
 import { Component, OnInit } from '@angular/core';
+import { Album } from '../models/Album';
 
 @Component({
   selector: 'app-artist',
@@ -12,6 +13,7 @@ export class ArtistComponent implements OnInit {
   artist ?: Artist | null = null;
   favoriteArtists ?: Artist[] = [];
   jsonData : string | null = null;
+  albumList: Album[] = [];
 
   constructor(public httpService: SpotifyService) {}
 
@@ -31,6 +33,7 @@ export class ArtistComponent implements OnInit {
     this.artist = await this.httpService.getArtist(this.inputArtist);
     this.createFavoriteArtist();
   }
+
 
   createFavoriteArtist() : void {
     if (!this.artist || this.favoriteArtists?.find((x) => x.id === this.artist?.id)) {

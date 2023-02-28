@@ -10,22 +10,20 @@ import { Album } from '../models/Album';
   styleUrls: ['./album.component.css']
 })
 export class AlbumComponent implements OnInit {
-  artistId : string | null = null;
-  album : Album[] | null = null;
+  artistId ?: string | null = null;
+  albumList: Album[] = [];
+
 
   constructor(public httpService: SpotifyService, public route : ActivatedRoute) { }
 
   ngOnInit(): void {
     this.httpService.connectSpotify();
     this.artistId = this.route.snapshot.paramMap.get('artistId');
+    this.getAlbum();
   }
 
   async getAlbum() : Promise<void> {
-    if (!this.artistId) {
-      return;
-    }
-
-    this.album = await this.httpService.getAlbums(this.artistId);
+    this.albumList = await this.httpService.getAlbums(this.artistId ?? "") ?? [];
   }
 
 }

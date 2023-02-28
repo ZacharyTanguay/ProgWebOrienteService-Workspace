@@ -15,7 +15,7 @@ const CLIENT_SECRET = '4992e896159442a6a78b0ec1433188c1';
 export class SpotifyService implements OnInit {
   spotifyToken?: string;
   artist ?: Artist;
-  albums : Album[] = [];
+  album ?: Album[];
 
   constructor(public httpClient: HttpClient) { }
   ngOnInit(): void {
@@ -89,34 +89,24 @@ export class SpotifyService implements OnInit {
   }
 
   async getAlbums(artistId: string): Promise<Album[] | null> {
-    try {
-      let x = await lastValueFrom(
-        this.httpClient.get<any>(
-          'https://api.spotify.com/v1/artists/' +
-          artistId +
-          '/albums?include_groups=album,single',
-          this.getHttpOptions()
-        )
-      );
-      console.log(x);
+    let response = await lastValueFrom(
+      this.httpClient.get<AlbumsResponse>(
+        'https://api.spotify.com/v1/artists/' +
+        artistId +
+        '/albums?market=US&include_groups=album,single',
+        this.getHttpOptions()
+      )
+    );
+    console.log(response);
 
-      let albums = [];
-      for (let i = 0; i < x.items.length; i++) {
-        albums.push(
-          new Album(
-            x.items[i].id,
-            x.items[i].name,
-            x.items[i].images[0].url,
-            []
-          )
-        );
-      }
-      return albums;
-    } catch (error) {
-      console.log('Error while getting albums for artist : ' + artistId);
-      console.log('error');
-      return null;
-    }
+    return response.items.map((album) => {
+      return new Album(
+        album.id,
+        album.name,
+        album.images[0].url,
+        []
+      );
+    });
   }
 
   async getSongs(album: Album): Promise<Song[] | null> {
@@ -144,15 +134,23 @@ export class SpotifyService implements OnInit {
 }
 
 interface ArtistsResponse {
-    artists: {
-      items: ArtistResponse[];
-    };
+  artists: {
+    items: {
+      id: string;
+      name: string;
+      images: {
+        url: string
+      }[];
+    }[];
+  };
 }
 
-interface ArtistResponse {
-    id: string;
-    name: string;
-    images: { 
-      url: string 
+interface AlbumsResponse {
+    items: {
+      id: string;
+      name: string;
+      images: {
+        url: string
+      }[];
     }[];
 }

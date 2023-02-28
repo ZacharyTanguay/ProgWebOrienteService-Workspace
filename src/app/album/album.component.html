@@ -12,35 +12,14 @@
     <main>
         <div class="row">
             <div class="albums">
-                <h3>Albums de l'artiste X</h3>
+                <h3>Albums de l'artiste {{artistId}}</h3>
                 <div class="row">
                     <!-- Liste d'albums d'un artiste choisi -->
-                    <div>
-                        <h4>Album 1</h4>
-                        <img src="assets/images/album.png" alt="album 1">
+                    <div *ngFor="let x of albumList">
+                        <h4>{{x.name}}</h4>
+                        <img [src]="x.imageUrl" alt="x.name"/>
                         <button>Chansons</button>
                     </div>
-                    <div>
-                        <h4>Album 2</h4>
-                        <img src="assets/images/album.png" alt="album 2">
-                        <button>Chansons</button>
-                    </div>
-                    <div>
-                        <h4>Album 3</h4>
-                        <img src="assets/images/album.png" alt="album 3">
-                        <button>Chansons</button>
-                    </div>
-                    <div>
-                        <h4>Album 4</h4>
-                        <img src="assets/images/album.png" alt="album 4">
-                        <button>Chansons</button>
-                    </div>
-                    <div>
-                        <h4>Album 5</h4>
-                        <img src="assets/images/album.png" alt="album 5">
-                        <button>Chansons</button>
-                    </div>
-
                 </div>
             </div>
         </div>
