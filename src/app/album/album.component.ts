@@ -1,7 +1,7 @@
 import { Artist } from './../models/Artist';
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../services/spotify.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Album } from '../models/Album';
 
 @Component({
@@ -19,8 +19,10 @@ export class AlbumComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpService.connectSpotify();
-    this.artistId = this.route.snapshot.paramMap.get('artistId');
-    this.getAlbum();
+    this.route.paramMap.subscribe((params:ParamMap) => {
+      this.artistId = params.get("artistId");
+      this.getAlbum();
+     });
   }
 
   async getAlbum() : Promise<void> {
