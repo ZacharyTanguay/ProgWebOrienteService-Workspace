@@ -12,6 +12,7 @@ import { Album } from '../models/Album';
 export class AlbumComponent implements OnInit {
   artistId ?: string | null = null;
   albumList: Album[] = [];
+  artistName ?: string | null = null;
 
 
   constructor(public httpService: SpotifyService, public route : ActivatedRoute) { }
@@ -24,6 +25,7 @@ export class AlbumComponent implements OnInit {
 
   async getAlbum() : Promise<void> {
     this.albumList = await this.httpService.getAlbums(this.artistId ?? "") ?? [];
+    this.artistName = (await this.httpService.getArtistById(this.artistId ?? ""))?.name;
   }
 
 }

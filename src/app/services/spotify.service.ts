@@ -69,23 +69,23 @@ export class SpotifyService implements OnInit {
         artist.images[0].url
       );
     })[0];
+  }
 
-    /* Sans interface
-    let x = await lastValueFrom(
-      this.httpClient.get<any>(
-        'https://api.spotify.com/v1/search?type=artist&offset=0&limit=1&q=' +
-        artistName,
+  async getArtistById(id: string): Promise<Artist | undefined> {
+    let response = await lastValueFrom(
+      this.httpClient.get<ArtistResponse>(
+        'https://api.spotify.com/v1/artists/' + id,
         this.getHttpOptions()
       )
     );
-    console.log(x);
+    console.log(response);
+
 
     return new Artist(
-      x.artists.items[0].id,
-      x.artists.items[0].name,
-      x.artists.items[0].images[0].url
+      response.id,
+      response.name,
+      response.images[0].url
     );
-    */
   }
 
   async getAlbums(artistId: string): Promise<Album[] | null> {
@@ -93,7 +93,7 @@ export class SpotifyService implements OnInit {
       this.httpClient.get<AlbumsResponse>(
         'https://api.spotify.com/v1/artists/' +
         artistId +
-        '/albums?market=US&include_groups=album,single',
+        '/albums?market=US&limit=50&include_groups=album',
         this.getHttpOptions()
       )
     );
@@ -132,17 +132,18 @@ export class SpotifyService implements OnInit {
   }
   
 }
-
 interface ArtistsResponse {
   artists: {
-    items: {
-      id: string;
-      name: string;
-      images: {
-        url: string
-      }[];
-    }[];
+    items: ArtistResponse[];
   };
+}
+
+interface ArtistResponse {
+  id: string;
+  name: string;
+  images: { 
+    url: string 
+  }[];
 }
 
 interface AlbumsResponse {
