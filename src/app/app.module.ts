@@ -27,7 +27,7 @@ import { SongComponent } from './song/song.component';
       { path: '', redirectTo: '/artist', pathMatch: 'full' },
       { path: 'artist', component: ArtistComponent },
       { path: 'album/:artistId', component: AlbumComponent },
-      { path: 'show', component: ShowComponent },
+      { path: 'show/:artistName', component: ShowComponent },
       { path: 'song', component: SongComponent },
     ]),
   ],
