@@ -16,7 +16,7 @@
             <div class="shows">
                  <!-- Liste des concerts -->
                  <div *ngFor="let x of showList">
-                    <h4>{{x.datetime}}</h4>
+                    <h4>{{x.datetime | date : 'medium'}}</h4>
                     <p>{{x.venue.country}}</p>
                     <p>{{x.venue.city}}</p>
                 </div>

@@ -9,6 +9,7 @@ import { ArtistComponent } from './artist/artist.component';
 import { AlbumComponent } from './album/album.component';
 import { ShowComponent } from './show/show.component';
 import { SongComponent } from './song/song.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SongComponent } from './song/song.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    GoogleMapsModule,
     RouterModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/artist', pathMatch: 'full' },
