@@ -28,6 +28,7 @@ export class AlbumComponent implements OnInit {
   async getAlbum() : Promise<void> {
     this.albumList = await this.httpService.getAlbums(this.artistId ?? "") ?? [];
     this.artistName = (await this.httpService.getArtistById(this.artistId ?? ""))?.name;
+    console.log(this.albumList);
   }
 
 }

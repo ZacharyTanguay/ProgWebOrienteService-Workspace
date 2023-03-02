@@ -30,7 +30,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
       { path: 'artist', component: ArtistComponent },
       { path: 'album/:artistId', component: AlbumComponent },
       { path: 'show/:artistName', component: ShowComponent },
-      { path: 'song', component: SongComponent },
+      { path: 'song/:artistId', component: SongComponent },
     ]),
   ],
   providers: [],

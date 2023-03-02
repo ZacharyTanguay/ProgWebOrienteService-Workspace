@@ -14,10 +14,10 @@ const CLIENT_SECRET = '4992e896159442a6a78b0ec1433188c1';
 })
 export class SpotifyService implements OnInit {
   spotifyToken?: string;
-  artist ?: Artist;
-  album ?: Album[];
+  artist?: Artist;
+  album?: Album[];
 
-  constructor(public httpClient: HttpClient) { }
+  constructor(public httpClient: HttpClient) {}
   ngOnInit(): void {
     this.connectSpotify();
   }
@@ -56,18 +56,14 @@ export class SpotifyService implements OnInit {
     let response = await lastValueFrom(
       this.httpClient.get<ArtistsResponse>(
         'https://api.spotify.com/v1/search?type=artist&offset=0&limit=1&q=' +
-        artistName,
+          artistName,
         this.getHttpOptions()
       )
     );
     console.log(response);
 
     return response.artists.items.map((artist) => {
-      return new Artist(
-        artist.id,
-        artist.name,
-        artist.images[0].url
-      );
+      return new Artist(artist.id, artist.name, artist.images[0].url);
     })[0];
   }
 
@@ -80,57 +76,38 @@ export class SpotifyService implements OnInit {
     );
     console.log(response);
 
-
-    return new Artist(
-      response.id,
-      response.name,
-      response.images[0].url
-    );
+    return new Artist(response.id, response.name, response.images[0].url);
   }
 
   async getAlbums(artistId: string): Promise<Album[] | null> {
     let response = await lastValueFrom(
       this.httpClient.get<AlbumsResponse>(
         'https://api.spotify.com/v1/artists/' +
-        artistId +
-        '/albums?market=US&limit=50&include_groups=album',
+          artistId +
+          '/albums?market=US&limit=50&include_groups=album',
         this.getHttpOptions()
       )
     );
     console.log(response);
 
     return response.items.map((album) => {
-      return new Album(
-        album.id,
-        album.name,
-        album.images[0].url,
-        []
-      );
+      return new Album(album.id, album.name, album.images[0].url);
     });
   }
 
-  async getSongs(album: Album): Promise<Song[] | null> {
-    try {
-      let x = await lastValueFrom(
-        this.httpClient.get<any>(
-          'https://api.spotify.com/v1/albums/' + album.id,
-          this.getHttpOptions()
-        )
-      );
-      console.log(x);
+  async getSongs(albumId: string): Promise<Song[] | null> {
+    let x = await lastValueFrom(
+      this.httpClient.get<SongsResponse>(
+        'https://api.spotify.com/v1/albums/' + albumId + '/tracks?market=US',
+        this.getHttpOptions()
+      )
+    );
+    console.log(x);
 
-      let songs: Song[] = [];
-      for (let i = 0; i < x.tracks.items.length; i++) {
-        songs.push(new Song(x.tracks.items[i].id, x.tracks.items[i].name));
-      }
-      return songs;
-    } catch (error) {
-      console.log('Error while getting songs for album : ' + album.name);
-      console.log('error');
-      return [];
-    }
+    return x.items.map((song) => {
+      return new Song(song.id, song.name);
+    });
   }
-  
 }
 interface ArtistsResponse {
   artists: {
@@ -141,17 +118,24 @@ interface ArtistsResponse {
 interface ArtistResponse {
   id: string;
   name: string;
-  images: { 
-    url: string 
+  images: {
+    url: string;
   }[];
 }
 
 interface AlbumsResponse {
-    items: {
-      id: string;
-      name: string;
-      images: {
-        url: string
-      }[];
+  items: {
+    id: string;
+    name: string;
+    images: {
+      url: string;
     }[];
+  }[];
+}
+
+interface SongsResponse {
+  items: {
+    id: string;
+    name: string;
+  }[];
 }
