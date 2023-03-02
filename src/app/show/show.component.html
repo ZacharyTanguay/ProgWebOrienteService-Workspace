@@ -12,7 +12,10 @@
     <main>
         <h3>Concerts de l'artiste {{artistName}}</h3>
         <div class="row">
-            <img src="assets/images/googlemap.png" alt="Google Map" class="map">
+            <google-map class="map" [zoom]="1" width="900" height="500">
+                <map-marker *ngFor="let x of markerPositions" [position]="x">
+                </map-marker>
+            </google-map>
             <div class="shows">
                  <!-- Liste des concerts -->
                  <div *ngFor="let x of showList">

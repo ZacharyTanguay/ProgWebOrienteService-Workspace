@@ -11,6 +11,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 export class ShowComponent implements OnInit {
   artistName?: string | null = null;
   showList: ShowResponse[] = [];
+  markerPositions : google.maps.LatLngLiteral[] = [];
   
   constructor(public httpService: BandsintownService, public route : ActivatedRoute) { }
 
@@ -24,6 +25,10 @@ export class ShowComponent implements OnInit {
   async getArtist() : Promise<void> {
     this.showList = await this.httpService.getArtist(this.artistName ?? "");
     console.log(this.showList);
+    for(let x of this.showList){
+      this.markerPositions.push({lat: + x.venue.latitude, lng: + x.venue.longitude});
+    }
+    console.log(this.markerPositions);
   }
 
 }
