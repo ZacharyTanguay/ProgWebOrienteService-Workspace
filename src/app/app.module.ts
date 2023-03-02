@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
@@ -10,6 +10,8 @@ import { AlbumComponent } from './album/album.component';
 import { ShowComponent } from './show/show.component';
 import { SongComponent } from './song/song.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,13 @@ import { GoogleMapsModule } from '@angular/google-maps';
     HttpClientModule,
     GoogleMapsModule,
     RouterModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (HttpLoaderFactory),
+        deps: [HttpClient]
+      }
+    }),
     RouterModule.forRoot([
       { path: '', redirectTo: '/artist', pathMatch: 'full' },
       { path: 'artist', component: ArtistComponent },
@@ -37,3 +46,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
