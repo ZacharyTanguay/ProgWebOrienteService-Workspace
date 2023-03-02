@@ -10,18 +10,19 @@
 </head>
 <body>
     <main>
-        <h3>Chansons de l'album {{albumName}}</h3>
+        <h3>Chansons de l'album x</h3>
         <div class="row">
             <div class="youtubePlayer">
-                <img src="assets/images/yourubeplayer.png" alt="Youtube player">
+                <iframe width="560" height="315" [src]="getSafeUrl()" title="YouTube video player" 
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; 
+                web-share" allowfullscreen></iframe>
             </div>
             <div class="songs">
                 <div class="songList">
-                    
                     <!-- Liste de chansons d'un album choisi -->
                     <div *ngFor="let x of songList">
                         <p>{{x.name}}</p>
-                        <button>Jouer</button>
+                        <button (click)="searchVideo(x.name)">Jouer</button>
                     </div>
                 </div>
             </div>
