@@ -12,34 +12,29 @@ import { SongComponent } from './song/song.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader } from '@ngx-translate/core';
+import { YoutubePipe } from './pipe/youtube.pipe';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     ArtistComponent,
     AlbumComponent,
     ShowComponent,
     SongComponent,
-  ],
+    YoutubePipe,
+   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     GoogleMapsModule,
     RouterModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (HttpLoaderFactory),
-        deps: [HttpClient]
-      }
-    }),
     RouterModule.forRoot([
       { path: '', redirectTo: '/artist', pathMatch: 'full' },
       { path: 'artist', component: ArtistComponent },
       { path: 'album/:artistId', component: AlbumComponent },
       { path: 'show/:artistName', component: ShowComponent },
-      { path: 'song/:artistId', component: SongComponent },
+      { path: 'song/:artistId/:albumName/:artistName', component: SongComponent },
     ]),
   ],
   providers: [],

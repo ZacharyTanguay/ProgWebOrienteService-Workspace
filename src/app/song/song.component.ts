@@ -15,8 +15,9 @@ const youtubeURL = "https://www.youtube.com/embed/";
 export class SongComponent implements OnInit {
   artistId ?: string | null = null;
   artistName ?: string | null = null;
+  albumName ?: string | null = null;
   songList: Song[] = [];
-  videoId : string = "";
+  songName : string = "";
   videoUrl ?: SafeResourceUrl;
 
 
@@ -26,6 +27,8 @@ export class SongComponent implements OnInit {
     this.httpService.connectSpotify();
     this.route.paramMap.subscribe((params:ParamMap) => {
       this.artistId = params.get("artistId");
+      this.artistName = params.get("artistName");
+      this.albumName = params.get("albumName");
       this.getSong();
      });
   }
@@ -36,12 +39,14 @@ export class SongComponent implements OnInit {
   }
 
   async searchVideo(songName : string):Promise<void>{
-    this.videoId = await this.google.searchVideoId(songName);
+    this.songName = await this.google.searchVideoId(this.artistName + " " + songName);
+    console.log(this.songName);
     this.getSafeUrl();
   }
 
   getSafeUrl() : SafeResourceUrl{
-    return this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(youtubeURL + this.videoId);
+    console.log(this.songName);
+    return this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(youtubeURL + this.songName);
   }
 
 
