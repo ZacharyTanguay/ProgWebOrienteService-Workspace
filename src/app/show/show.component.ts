@@ -22,8 +22,8 @@ export class ShowComponent implements OnInit {
       this.artistName = params.get("artistName");
       this.getArtist();
      });
-     
-     this.language = this.translator.currentLang;
+
+     this.language = "fr"
 
      this.translator.onLangChange.subscribe((event : LangChangeEvent) => {
         this.language = event.lang;
