@@ -16,12 +16,16 @@
   },
 
   "album":{
-    "titre1": "albums discography",
-    "chansons": "songs"
+    "titre1": "Albums discography",
+    "chansons": "Songs"
   },
 
   "song":{
-    "titre1": "songs discography",
+    "titre1": "Songs discography",
     "jouer": "Play"
+  },
+
+  "show": {
+    "titre1": "Upcoming concerts"
   }
 }

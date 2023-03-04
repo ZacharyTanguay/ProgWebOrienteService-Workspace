@@ -9,7 +9,7 @@
 </head>
 <body>
     <main>
-        <h3>Concerts de l'artiste {{artistName}}</h3>
+        <h3>{{artistName}} - <span translate>show.titre1</span></h3>
         <div class="row">
             <google-map class="map" [zoom]="1" width="100%">
                 <map-marker *ngFor="let x of markerPositions" [position]="x">
