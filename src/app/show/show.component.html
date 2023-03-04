@@ -11,16 +11,16 @@
     <main>
         <h3>{{artistName}} - <span translate>show.titre1</span></h3>
         <div class="row">
-            <google-map class="map" [zoom]="1" width="100%">
+            <google-map class="map" [zoom]="2" width="100%">
                 <map-marker *ngFor="let x of markerPositions" [position]="x">
                 </map-marker>
             </google-map>
             <div class="shows">
                  <!-- Liste des concerts -->
                  <div *ngFor="let x of showList">
-                    <h4>{{x.datetime | date : 'medium'}}</h4>
-                    <p>{{x.venue.country}}</p>
-                    <p>{{x.venue.city}}</p>
+                    <h4>{{x.datetime | date : 'medium' : undefined : language}}</h4>
+                    <p><span translate>show.pays</span> {{x.venue.country}}</p>
+                    <p><span translate>show.ville</span> {{x.venue.city}}</p>
                 </div>
             </div>           
         </div>

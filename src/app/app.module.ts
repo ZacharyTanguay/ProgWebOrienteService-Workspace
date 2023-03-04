@@ -13,6 +13,9 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { YoutubePipe } from './pipe/youtube.pipe';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
   declarations: [	
@@ -47,7 +50,13 @@ import { YoutubePipe } from './pipe/youtube.pipe';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    registerLocaleData(localeFr, 'fr');
+}
+
+}
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);

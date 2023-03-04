@@ -26,6 +26,8 @@
   },
 
   "show": {
-    "titre1": "Concerts à venir"
+    "titre1": "Concerts à venir",
+    "pays": "Pays :",
+    "ville": "Ville :"
   }
 }
