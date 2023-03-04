@@ -15,9 +15,9 @@
         <div><a [routerLink]="['artist']">Super musique limitée</a></div>
         <div class="spacer"></div>
         <div>
-            <select name="language" id="language">
-                <option value="fr-ca">Français</option>
-                <option value="en-us">English</option>
+            <select [(ngModel)]="language" (ngModelChange)="changeLanguage($event)">
+                <option value="fr" ngValue="'fr'">Français</option>
+                <option value="en" ngValue="'en'">English</option>
             </select>
         </div>
     </div>
