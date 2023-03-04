@@ -9,7 +9,7 @@
 </head>
 <body>
     <main>
-        <h3>Chansons de l'album {{albumName}}</h3>
+        <h3>{{albumName}} - <span translate>song.titre1</span></h3>
         <div class="row">
             <div class="youtubePlayer">
                 <iframe width="560" height="315" [src]="getSafeUrl() | youtube " title="YouTube video player" 
@@ -20,8 +20,8 @@
                 <div class="songList">
                     <!-- Liste de chansons d'un album choisi -->
                     <div *ngFor="let x of songList">
-                        <p>{{x.name}}</p>
-                        <button (click)="searchVideo(x.name)">Jouer</button>
+                        <p>{{x.name}}</p><br>
+                        <button (click)="searchVideo(x.name)" translate>song.jouer</button>
                     </div>
                 </div>
             </div>

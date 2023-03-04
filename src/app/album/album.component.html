@@ -11,13 +11,13 @@
     <main>
         <div class="row">
             <div class="albums">
-                <h3>Albums de l'artiste {{artistName}}</h3>
+                <h3>{{artistName}} - <span translate>album.titre1</span></h3>
                 <div class="row">
                     <!-- Liste d'albums d'un artiste choisi -->
                     <div *ngFor="let x of albumList">
                         <h4>{{x.name}}</h4>
                         <img [src]="x.imageUrl" alt="x.name"/>
-                        <button [routerLink]="['/song', x.id, x.name, artistName]">Chansons</button>
+                        <button [routerLink]="['/song', x.id, x.name, artistName]" translate>album.chansons</button>
                     </div>
                 </div>
             </div>

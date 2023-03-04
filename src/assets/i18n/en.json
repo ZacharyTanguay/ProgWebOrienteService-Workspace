@@ -1,6 +1,6 @@
 {
   "app":{
-    "titre":"Limited super musique",
+    "titre1":"Limited super musique",
     "copyrigth":"All rights reserved to Spotify, BandsInTown et Google"
   },
 
@@ -13,5 +13,15 @@
     "aucunFav":"No favorite artist",
     "albums":"Albums",
     "concerts":"Concerts"
+  },
+
+  "album":{
+    "titre1": "albums discography",
+    "chansons": "songs"
+  },
+
+  "song":{
+    "titre1": "songs discography",
+    "jouer": "Play"
   }
 }
