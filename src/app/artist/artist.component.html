@@ -14,25 +14,26 @@
         <div class="search">
           <h3 translate>artist.titre1</h3>
           <form>
-            <input [(ngModel)]="inputArtist" type="text" name="inputArtist" placeholder="Rechercher un artiste ..." translate>
-            <button (click)="searchArtist()" translate>Ajouter aux favoris</button>
+          <input [(ngModel)]="inputArtist" type="text" name="inputArtist" placeholder="{{'artist.rechercher' | translate}}" translate>
+            <button (click)="searchArtist()" translate>artist.ajouterFav</button>
           </form>
         </div>
         <div class="display">
-          <h3 translate>Vos artistes</h3>
+          <h3 translate>artist.titre2</h3>
           <div class="text-center" *ngIf="favoriteArtists?.length == 0">
-            <p translate>Aucun artiste favoris</p>
+            <p translate>artist.aucunFav</p>
           </div>
           <div class="row">
             <!-- Liste d'artistes ajoutés aux favoris -->
             <div *ngFor="let x of favoriteArtists">
                 <h4>{{x.name}}</h4>
                 <img [src]="x.imageUrl" width="212.39" height="212.39" />
-                <button [routerLink]="['/album', x.id]" translate>Albums</button><button [routerLink]="['/show', x.name]" translate>Concerts</button>
+                <button [routerLink]="['/album', x.id]" translate>artist.albums</button>
+                <button [routerLink]="['/show', x.name]" translate>artist.concerts</button>
             </div>
           </div>
           <div class="text-center">
-            <button (click)="clearFavoriteArtist()" translate>Vider les favoris</button>
+            <button (click)="clearFavoriteArtist()" translate>artist.supprimerFav</button>
           </div>
         </div>
       </div>

@@ -1,6 +1,17 @@
 {
+  "app":{
+    "titre":"Limited super musique",
+    "copyrigth":"All rights reserved to Spotify, BandsInTown et Google"
+  },
+
   "artist":{
     "titre1":"Add an artist",
-    "RechercherArtiste":"Search an artist"
+    "rechercher":"Search an artist",
+    "titre2":"Your favorite artists",
+    "ajouterFav":"Add to favorites",
+    "supprimerFav":"Clear favorites",
+    "aucunFav":"No favorite artist",
+    "albums":"Albums",
+    "concerts":"Concerts"
   }
 }

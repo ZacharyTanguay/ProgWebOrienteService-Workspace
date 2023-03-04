@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="app.component.css">
-    <title>TP2</title>
+    <title>{{title}}</title>
 </head>
 
 <body>
   <header>
     <div class="row">
-        <div><a [routerLink]="['artist']">Super musique limitée</a></div>
+        <div><a [routerLink]="['artist']" translate>app.titre</a></div>
         <div class="spacer"></div>
         <div>
             <select [(ngModel)]="language" (ngModelChange)="changeLanguage($event)">
@@ -27,7 +27,7 @@
 
     <footer>
       <div>
-          &copy; Tous droits réservés à Spotify, BandsInTown et Google
+        <p><span>&copy; </span> <span translate="">app.copyrigth</span></p>
       </div>
   </footer>
 </body>
