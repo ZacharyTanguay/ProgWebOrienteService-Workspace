@@ -7,7 +7,6 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'TP2';
   language : string = "fr";
   
   constructor(public translator : TranslateService) {
