@@ -11,7 +11,7 @@ import { ShowComponent } from './show/show.component';
 import { SongComponent } from './song/song.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { TranslateLoader } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { YoutubePipe } from './pipe/youtube.pipe';
 
 @NgModule({
@@ -36,6 +36,13 @@ import { YoutubePipe } from './pipe/youtube.pipe';
       { path: 'show/:artistName', component: ShowComponent },
       { path: 'song/:artistId/:albumName/:artistName', component: SongComponent },
     ]),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],
