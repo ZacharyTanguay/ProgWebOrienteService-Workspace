@@ -18,14 +18,14 @@ import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     ArtistComponent,
     AlbumComponent,
     ShowComponent,
     SongComponent,
     YoutubePipe,
-   ],
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -37,15 +37,18 @@ registerLocaleData(localeFr, 'fr');
       { path: 'artist', component: ArtistComponent },
       { path: 'album/:artistId', component: AlbumComponent },
       { path: 'show/:artistName', component: ShowComponent },
-      { path: 'song/:artistId/:albumName/:artistName', component: SongComponent },
+      {
+        path: 'song/:artistId/:albumName/:artistName',
+        component: SongComponent,
+      },
     ]),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
@@ -53,8 +56,7 @@ registerLocaleData(localeFr, 'fr');
 export class AppModule {
   constructor() {
     registerLocaleData(localeFr, 'fr');
-}
-
+  }
 }
 
 
